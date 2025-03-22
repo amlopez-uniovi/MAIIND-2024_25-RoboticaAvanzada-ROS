@@ -32,7 +32,7 @@ docker inspect maiind_ros2 | grep -i "Mounts" -A 10
 Para ejecutar el contenedor si lo hemos detenido:
 ```
 docker start maiind_ros2
-``
+```
 Para para el contendor:
 ```
 docker stop maiind_ros2
