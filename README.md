@@ -6,7 +6,7 @@ Repositorio para el módulo de ROS de la asignatura de Robótica Avanzada en el 
 Situarse en la carpeta de trabajo (esta) y ejecutar el comando:
 
 ```
-docker build -t ros-foxy-turtlesim  .
+docker build -t ros2-foxy-maiind  .
 ```
 
 ## Crear el repositorio
@@ -14,21 +14,28 @@ docker build -t ros-foxy-turtlesim  .
 ```
 mkdir -p ./maiind_ws/src
 
-docker run -it -v $(pwd)/maiind_ws/src:/root/maiind_ws/src --name maiind_ros ros-foxy-turtlesim
+docker run -it -v $(pwd)/maiind_ws/src:/root/maiind_ws/src --name maiind_ros2 ros2-foxy-maiind
 
 ```
 
 ### Algunos comando útiles
+Para salir del shell del contenedor usar el comando *exit*.
 
-Tras ejecutar el \em run, estaremos en una terminal dentro del shell del contenedor. Si queremos salir, teclear comando \em exit
-
-Si queremos inspeccionar el enlace con el volumen local:
+Si queremos abrir otro shell del contenedor, cuando este está en ejecución:
 ```
-docker inspect maiind_ros | grep -i "Mounts" -A 10
+docker exec -it maiind_ros2 bash
 ```
-Si queremos volver al shel del contenedor:
+Si desde una terminal en nuestro equipo queremos inspeccionar el enlace con el volumen local:
 ```
-docker exec -it maiind_ros bash
+docker inspect maiind_ros2 | grep -i "Mounts" -A 10
+```
+Para ejecutar el contenedor si lo hemos detenido:
+```
+docker start maiind_ros2
+``
+Para para el contendor:
+```
+docker stop maiind_ros2
 ```
 
 
