@@ -6,7 +6,7 @@ Repositorio para el módulo de ROS de la asignatura de Robótica Avanzada en el 
 Situarse en la carpeta de trabajo (esta) y ejecutar el comando:
 
 ```
-docker build -t ros2-foxy-maiind  .
+docker build -t ros2-humble-maiind  .
 ```
 
 ## Crear el repositorio
@@ -14,7 +14,7 @@ docker build -t ros2-foxy-maiind  .
 ```
 mkdir -p ./maiind_ws/src
 
-docker run -it -v $(pwd)/maiind_ws/src:/root/maiind_ws/src --name maiind_ros2 ros2-foxy-maiind
+docker run -it -v $(pwd)/maiind_ws/src:/root/maiind_ws/src --name maiind_ros2_humble ros2-humble-maiind
 
 ```
 
