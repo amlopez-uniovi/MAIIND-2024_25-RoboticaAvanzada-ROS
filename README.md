@@ -54,7 +54,6 @@ Este paquete de ROS 2 crea un nodo en Python que mueve la tortuga del simulador 
 
 ## 🚀 Instalación
 
-```bash
 mkdir -p ~/ros2_ws/src
 cd ~/ros2_ws
 colcon build
@@ -65,7 +64,7 @@ source install/setup.bash
 cd ~/ros2_ws/src
 ros2 pkg create --build-type ament_python turtlesim_circle --dependencies rclpy turtlesim
 
-#Código del nodo
+# Código del nodo
 
 cd ~/ros2_ws/src
 ros2 pkg create --build-type ament_python turtlesim_circle --dependencies rclpy turtlesim
@@ -115,7 +114,7 @@ def main(args=None):
 if __name__ == '__main__':
     main()
 
-# Editar setup.py
+# Editar setup.py
 
 Edita setup.py para añadir el punto de entrada:
 python
@@ -126,7 +125,7 @@ entry_points={
     ],
 },
 
-#Compilar
+# Compilar
 
 bash
 CopiarEditar
