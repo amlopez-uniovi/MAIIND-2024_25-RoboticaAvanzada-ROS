@@ -48,12 +48,12 @@ ros2 run turtlesim turtlesim_node
 Abre una segunda terminal en el contenedor y ejecuta:
 ````
 ros2 topic pub /turtle1/cmd_vel geometry_msgs/msg/Twist "{linear: {x: 2.0, y: 0.0, z: 0.0}, angular: {x: 0.0, y: 0.0, z: 1.0}}"
-```
+````
 
 Abre una tercera terminal en el contenedor y ejecuta:
 ````
 ros2 topic echo /turtle1/pose
-```
+````
 Cancela la ejecución en las termianles 2 y 3. En una de ellas ejecuta el siguiente comando, que te permitirá manejar la tortuga con los cursores del teclado:
 ```
 ros2 run turtlesim turtle_teleop_key
