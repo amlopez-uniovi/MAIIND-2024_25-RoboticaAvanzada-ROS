@@ -1,8 +1,21 @@
-# 🐢 turtlesim_circle - ROS 2 Demo con Movimiento Circular
+# turtlesim_circle - ROS 2 Demo con Movimiento Circular
 
-Este paquete de ROS 2 controla el nodo `turtlesim` para que la tortuga realice un movimiento circular continuo, mientras muestra su posición actual en consola. Es una práctica ideal para estudiantes que están aprendiendo ROS 2, comunicación de nodos, publicación de mensajes y suscripciones.
+Este paquete de ROS 2 controla el nodo `turtlesim` para que la tortuga realice un movimiento circular continuo, mientras muestra su posición actual en consola. 
 
-## 📁 Estructura del proyecto
+## Creación de entorno de trabajo
+
+Primero, creamos un entorno de trabajo para almacenar nuestros desarrollos.
+
+```bash
+mkdir -p ~/maiind_ws/src
+cd ~/maiind_ws
+colcon build
+source install/setup.bash
+```
+
+## Creación del paquete: turtlesim_circle
+
+## Estructura del proyecto
 
 ```bash
 turtlesim_circle/
@@ -17,22 +30,19 @@ turtlesim_circle/
 └── setup.py
 ```
 
-## 🎯 Objetivo del nodo
+## Objetivo del nodo
 
 - Controlar la tortuga de `turtlesim` para que se mueva en un **círculo constante**.
 - Imprimir en pantalla su **posición actual** (`x`, `y`, `theta`) en tiempo real.
 
-## 🧱 Creación del paquete
+## Creación del paquete
 
 Primero, crea la estructura básica del paquete.
 
 ```bash
-mkdir -p ~/ros2_ws/src
-cd ~/ros2_ws/src
+cd ~/maiind_ws/src
 ros2 pkg create --build-type ament_python turtlesim_circle --dependencies rclpy geometry_msgs turtlesim
 ```
-
-Esto crea un paquete Python llamado `turtlesim_circle`.
 
 Luego, crea el archivo de recursos requerido por ROS 2 para registrar el nombre del paquete:
 
@@ -47,6 +57,8 @@ Este nodo:
 
 1. Publica comandos de velocidad angular y lineal para moverse en círculos.
 2. Se suscribe a la posición de la tortuga para mostrarla por consola.
+
+Crea el archivo ***turtlesim_circle_node.py*** con el siguiente codigo en el directorio turtlesim_circle:
 
 ```python
 # turtlesim_circle/turtlesim_circle_node.py
@@ -86,7 +98,7 @@ if __name__ == '__main__':
 
 ## 🔧 `setup.py`
 
-Asegúrate de incluir la información para instalar el nodo:
+Asegúrate de incluir la información para instalar el nodo modificando el archivo setup.py como sigue (en realidad solo tendrás que modificar los entry_points):
 
 ```python
 from setuptools import setup
@@ -114,6 +126,28 @@ setup(
     },
 )
 ```
+Una vez hecho reconstruye el nodo:
+
+```bash
+mkdir -p ~/maiind_ws/src
+cd ~/maiind_ws
+colcon build
+source install/setup.bash
+```
+## ▶️ Ejecutar el nodo
+
+Primero, abre dos terminales. En el primero:
+
+```bash
+ros2 run turtlesim turtlesim_node
+```
+
+Y en el segundo:
+
+```bash
+ros2 run turtlesim_circle circle_turtle
+```
+
 
 ## 🚀 Lanzamiento del nodo
 
@@ -143,24 +177,12 @@ def generate_launch_description():
 Desde el workspace raíz:
 
 ```bash
-cd ~/ros2_ws
+cd ~/maiind_ws
 colcon build
 source install/setup.bash
 ```
 
-## ▶️ Ejecutar el nodo
 
-Primero, abre dos terminales. En el primero:
-
-```bash
-ros2 run turtlesim turtlesim_node
-```
-
-Y en el segundo:
-
-```bash
-ros2 run turtlesim_circle circle_turtle
-```
 
 O, si usas el archivo de lanzamiento:
 
@@ -185,12 +207,3 @@ La tortuga comenzará a moverse en un círculo continuo, y verás en la terminal
 - [geometry_msgs/Twist](https://docs.ros.org/en/api/geometry_msgs/html/msg/Twist.html)
 - [turtlesim/Pose](https://docs.ros.org/en/api/turtlesim/html/msg/Pose.html)
 
-## 🧑‍🏫 Recomendación para estudiantes
-
-Este ejercicio es excelente para practicar:
-
-- Uso de publicadores y suscriptores en ROS 2
-- Comprensión del control de movimiento (cinemática diferencial)
-- Monitoreo de información en tiempo real desde sensores o tópicos
-
-¿Te gustaría que también te cree una versión con `teleop` o con servicios para resetear la posición de la tortuga? Puedo ayudarte con eso también 😄
