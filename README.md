@@ -37,111 +37,22 @@ Para para el contendor:
 ```
 docker stop maiind_ros2
 ```
+### Prueba de turtlesim
 
-# 🐢 turtlesim_circle - ROS 2 Nodo para mover la tortuga en círculos
+Necesitarás instalar un servidor X11 en tu operativo como XQuartz (Mac) o VcXsrv Windows X Server (Windows, ver PL1_Entorno de Trabajo.pdf con info relacionada).
 
-Este paquete de ROS 2 crea un nodo en Python que mueve la tortuga del simulador `turtlesim` en círculos y muestra su posición en consola en tiempo real.
+Abre una terminal en el contenedor:
 
----
+- Ejecuta el comando ros2 run turtlesim turtlesim_node
 
-## 📦 Requisitos
+Abre una segunda terminal en el contenedor:
+- Ejecuta el comando: 
+    - ros2 topic pub /turtle1/cmd_vel geometry_msgs/msg/Twist "{linear: {x: 2.0, y: 0.0, z: 0.0}, angular: {x: 0.0, y: 0.0, z: 1.0}}"
 
-- ROS 2 Humble, Foxy o compatible
-- Python 3
-- turtlesim (`sudo apt install ros-<distro>-turtlesim`)
+Abre una tercera terminal en el contenedor:
+- Ejecuta el comando: 
+    - ros2 topic echo /turtle1/pose
 
----
+Cancela la ejecución en las termianles 2 y 3. En una de ellas ejecuta el siguiente comando, que te permitirá manejas la tortuga con los cursores del teclado:
 
-## 🚀 Instalación
-
-mkdir -p ~/ros2_ws/src
-cd ~/ros2_ws
-colcon build
-source install/setup.bash
-
-# Crear el paquete
-
-cd ~/ros2_ws/src
-ros2 pkg create --build-type ament_python turtlesim_circle --dependencies rclpy turtlesim
-
-# Código del nodo
-
-cd ~/ros2_ws/src
-ros2 pkg create --build-type ament_python turtlesim_circle --dependencies rclpy turtlesim
-
-
-## Contenido de turtle_circle_node.py:
-
-import rclpy
-from rclpy.node import Node
-from geometry_msgs.msg import Twist
-from turtlesim.msg import Pose
-
-class TurtleCircle(Node):
-
-    def __init__(self):
-        super().__init__('turtle_circle_node')
-
-        self.publisher_ = self.create_publisher(Twist, 'turtle1/cmd_vel', 10)
-
-        self.subscription = self.create_subscription(
-            Pose,
-            'turtle1/pose',
-            self.pose_callback,
-            10
-        )
-
-        self.timer = self.create_timer(0.1, self.move_turtle)
-
-        self.get_logger().info('Nodo turtle_circle_node iniciado.')
-
-    def move_turtle(self):
-        msg = Twist()
-        msg.linear.x = 2.0
-        msg.angular.z = 1.0
-        self.publisher_.publish(msg)
-
-    def pose_callback(self, msg):
-        self.get_logger().info(f'Posición -> x: {msg.x:.2f}, y: {msg.y:.2f}, theta: {msg.theta:.2f}')
-
-def main(args=None):
-    rclpy.init(args=args)
-    node = TurtleCircle()
-    rclpy.spin(node)
-    node.destroy_node()
-    rclpy.shutdown()
-
-if __name__ == '__main__':
-    main()
-
-# Editar setup.py
-
-Edita setup.py para añadir el punto de entrada:
-python
-CopiarEditar
-entry_points={
-    'console_scripts': [
-        'turtle_circle = turtlesim_circle.turtle_circle_node:main',
-    ],
-},
-
-# Compilar
-
-bash
-CopiarEditar
-cd ~/ros2_ws
-colcon build
-source install/setup.bash
-
-# Ejecutar
-En una terminal:
-
-ros2 run turtlesim turtlesim_node
-
-En otra terminal:
-
-source ~/ros2_ws/install/setup.bash
-ros2 run turtlesim_circle turtle_circle
-
-
-
+- ros2 run turtlesim turtle_teleop_key
