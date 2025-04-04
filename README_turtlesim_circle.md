@@ -23,9 +23,9 @@ turtlesim_circle/
 │   └── turtlesim_circle
 ├── turtlesim_circle/
 │   └── __init__.py
+    └── turtlesim_circle_node.py
 ├── launch/
 │   └── turtlesim_circle_launch.py
-├── turtlesim_circle_node.py
 ├── package.xml
 └── setup.py
 ```
@@ -53,13 +53,12 @@ touch turtlesim_circle/resource/turtlesim_circle
 
 ## 🐍 Nodo principal: `turtlesim_circle_node.py`
 
-Este nodo:
+```bash
+cd ~/maiind_ws/src/turtlesim_circle/turtlesim_circle
+touch turtlesim_circle_node.py
+```
 
-1. Publica comandos de velocidad angular y lineal para moverse en círculos.
-2. Se suscribe a la posición de la tortuga para mostrarla por consola.
-
-Crea el archivo ***turtlesim_circle_node.py*** con el siguiente codigo en el directorio turtlesim_circle:
-
+Modifica el contenido del archivo turtlesim_circle_node.py con el siguiente codigo
 ```python
 # turtlesim_circle/turtlesim_circle_node.py
 
@@ -129,7 +128,6 @@ setup(
 Una vez hecho reconstruye el nodo:
 
 ```bash
-mkdir -p ~/maiind_ws/src
 cd ~/maiind_ws
 colcon build
 source install/setup.bash
@@ -153,6 +151,12 @@ ros2 run turtlesim_circle circle_turtle
 
 Puedes crear un archivo de lanzamiento opcional en `launch/turtlesim_circle_launch.py` para iniciar `turtlesim_node` y `circle_turtle` juntos:
 
+```bash
+mkdir -p ~/maiind_ws/src/turtlesim_circle/launch
+cd ~/maiind_ws/src/turtlesim_circle/launch
+touch turtlesim_circle_launch.py
+```
+
 ```python
 from launch import LaunchDescription
 from launch_ros.actions import Node
@@ -172,6 +176,17 @@ def generate_launch_description():
     ])
 ```
 
+El archivo setup.py debe modificarse para añadir lo siguiente:
+
+```python
+    data_files=[
+        ('share/ament_index/resource_index/packages', ['resource/' + package_name]),
+        ('share/' + package_name, ['package.xml']),
+        # Aquí se instala el archivo de launch
+        ('share/' + package_name + '/launch', ['launch/turtlesim_circle_launch.py']),
+    ],
+```
+
 ## ⚙️ Compilar e instalar
 
 Desde el workspace raíz:
@@ -181,29 +196,8 @@ cd ~/maiind_ws
 colcon build
 source install/setup.bash
 ```
-
-
-
-O, si usas el archivo de lanzamiento:
+Con la tortuga cerrada, al lanzar el siguiente comando se activan los dos nodos simultáneamente.
 
 ```bash
 ros2 launch turtlesim_circle turtlesim_circle_launch.py
 ```
-
-## 🧪 Resultado esperado
-
-La tortuga comenzará a moverse en un círculo continuo, y verás en la terminal salidas como:
-
-```
-[INFO] [circle_turtle]: Posición actual -> x: 5.44, y: 5.55, theta: 1.56
-[INFO] [circle_turtle]: Posición actual -> x: 5.60, y: 5.60, theta: 1.62
-...
-```
-
-## 📚 Recursos útiles
-
-- [Tutorial oficial de turtlesim](https://docs.ros.org/en/foxy/Tutorials/Understanding-ROS2-Nodes.html)
-- [ROS 2 Package Creation](https://docs.ros.org/en/foxy/Tutorials/Creating-Your-First-ROS2-Package.html)
-- [geometry_msgs/Twist](https://docs.ros.org/en/api/geometry_msgs/html/msg/Twist.html)
-- [turtlesim/Pose](https://docs.ros.org/en/api/turtlesim/html/msg/Pose.html)
-
