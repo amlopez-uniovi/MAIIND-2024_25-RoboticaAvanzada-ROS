@@ -10,8 +10,8 @@ RUN echo "deb [signed-by=/usr/share/keyrings/ros2-latest-archive-keyring.gpg] ht
 # Actualizamos e instalamos las actualizaciones necesarias
 RUN apt update && apt upgrade -y
 
-# Instalamos rviz2 para ROS 2 Humble
-RUN apt install -y ros-humble-rviz2
+# Instalamos rviz2 y rclpy para ROS 2 Humble
+RUN apt install -y ros-humble-rviz2 ros-humble-rclpy
 
 # Establecemos la variable de entorno DISPLAY para permitir gráficos en X11
 ENV DISPLAY=host.docker.internal:0.0
