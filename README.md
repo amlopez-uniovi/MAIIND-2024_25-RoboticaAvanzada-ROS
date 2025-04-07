@@ -161,5 +161,3 @@ docker stop ros2-humble-maiind
     - `ros2 run`: Ejecuta un nodo de ROS 2.
     - `turtlesim`: Paquete que contiene el nodo.
     - `turtle_teleop_key`: Nodo que permite controlar la tortuga con las teclas de dirección.
-
-```
