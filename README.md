@@ -66,7 +66,7 @@ docker exec -it ros2-humble-maiind bash
 **Explicación:**
 - `docker exec`: Ejecuta un comando en un contenedor en ejecución.
 - `-it`: Permite la interacción con el terminal del contenedor.
-- `maiind_ros2`: Nombre del contenedor.
+- `ros2-humble-maiind`: Nombre del contenedor.
 - `bash`: Shell que se abrirá en el contenedor.
 
 ### Inspeccionar el enlace con el volumen local
@@ -91,7 +91,7 @@ docker start ros2-humble-maiind
 
 **Explicación:**
 - `docker start`: Inicia un contenedor detenido.
-- `maiind_ros2`: Nombre del contenedor.
+- `ros2-humble-maiind`: Nombre del contenedor.
 
 ### Detener el contenedor
 
@@ -103,7 +103,7 @@ docker stop ros2-humble-maiind
 
 **Explicación:**
 - `docker stop`: Detiene un contenedor en ejecución.
-- `maiind_ros2`: Nombre del contenedor.
+- `ros2-humble-maiind`: Nombre del contenedor.
 
 ## Prueba de turtlesim
 
