@@ -162,12 +162,4 @@ docker stop ros2-humble-maiind
     - `turtlesim`: Paquete que contiene el nodo.
     - `turtle_teleop_key`: Nodo que permite controlar la tortuga con las teclas de dirección.
 
-¡Con esto, ya puedes explorar y practicar con ROS 2 utilizando `turtlesim`! MAIIND-2024_25-RoboticaAvanzada-ROS
-Repositorio para el módulo de ROS de la asignatura de Robótica Avanzada en el Máster en Ingeniería de Automatización e Informática Industrial por la Universidad de Oviedo
-
-ros2 topic echo /turtle1/pose
-````
-Cancela la ejecución en las termianles 2 y 3. En una de ellas ejecuta el siguiente comando, que te permitirá manejar la tortuga con los cursores del teclado:
-```
-ros2 run turtlesim turtle_teleop_key
 ```
