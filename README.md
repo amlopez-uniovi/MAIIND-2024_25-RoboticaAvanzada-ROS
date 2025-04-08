@@ -112,12 +112,12 @@ docker stop maiind_ros2_humble
 1. **Instalar un servidor X11**  
     Necesitarás un servidor X11 para visualizar aplicaciones gráficas desde el contenedor. Ejemplos:
     - **Mac**: [XQuartz](https://www.xquartz.org/)
-    - Ir al menú *XQuartz > Preferences > Security*, marcar la opción *Allow connections from network clients*.
-    - Cerrar XQuartz y reiniciar
-    - En una terminal de mac ejecutar el comando *xhost + 127.0.0.1*
+        - Ir al menú *XQuartz > Preferences > Security*, marcar la opción *Allow connections from network clients*.
+        - Cerrar XQuartz y reiniciar
+        - En una terminal de mac ejecutar el comando *xhost + 127.0.0.1*
     - **Windows**: [VcXsrv Windows X Server](https://sourceforge.net/projects/vcxsrv/)
-    - Instalará la aplicación *XLaunch*.
-    - Al iniciarla seleccionar los *Display Settings*: Seleccionar *Multplie Windows* y poner 0 en *Display Number*.
+        - Instalará la aplicación *XLaunch*.
+        - Al iniciarla seleccionar los *Display Settings*: Seleccionar *Multplie Windows* y poner 0 en *Display Number*.
 
 2. **Ejecutar el nodo de turtlesim**  
     Abre una terminal en el contenedor y ejecuta:
