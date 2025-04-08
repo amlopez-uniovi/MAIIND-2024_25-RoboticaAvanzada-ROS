@@ -60,7 +60,7 @@ exit
 Si el contenedor está en ejecución y necesitas abrir otro terminal, usa:
 
 ```bash
-docker exec -it ros2-humble-maiind bash
+docker exec -it maiind_ros2_humble bash
 ```
 
 **Explicación:**
@@ -74,7 +74,7 @@ docker exec -it ros2-humble-maiind bash
 Para verificar cómo está configurado el volumen entre tu máquina y el contenedor:
 
 ```bash
-docker inspect ros2-humble-maiind | grep -i "Mounts" -A 10
+docker inspect maiind_ros2_humble | grep -i "Mounts" -A 10
 ```
 
 **Explicación:**
@@ -86,7 +86,7 @@ docker inspect ros2-humble-maiind | grep -i "Mounts" -A 10
 Si el contenedor ha sido detenido, puedes iniciarlo nuevamente con:
 
 ```bash
-docker start ros2-humble-maiind
+docker start maiind_ros2_humble
 ```
 
 **Explicación:**
@@ -98,7 +98,7 @@ docker start ros2-humble-maiind
 Para detener el contenedor en ejecución:
 
 ```bash
-docker stop ros2-humble-maiind
+docker stop maiind_ros2_humble
 ```
 
 **Explicación:**
@@ -112,7 +112,12 @@ docker stop ros2-humble-maiind
 1. **Instalar un servidor X11**  
     Necesitarás un servidor X11 para visualizar aplicaciones gráficas desde el contenedor. Ejemplos:
     - **Mac**: [XQuartz](https://www.xquartz.org/)
+    - Ir al menú *XQuartz > Preferences > Security*, marcar la opción *Allow connections from network clients*.
+    - Cerrar XQuartz y reiniciar
+    - En una terminal de mac ejecutar el comando *xhost + 127.0.0.1*
     - **Windows**: [VcXsrv Windows X Server](https://sourceforge.net/projects/vcxsrv/)
+    - Instalará la aplicación *XLaunch*.
+    - Al iniciarla seleccionar los *Display Settings*: Seleccionar *Multplie Windows* y poner 0 en *Display Number*.
 
 2. **Ejecutar el nodo de turtlesim**  
     Abre una terminal en el contenedor y ejecuta:
