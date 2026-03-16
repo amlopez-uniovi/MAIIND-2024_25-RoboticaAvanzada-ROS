@@ -5,8 +5,6 @@ FROM osrf/ros:humble-desktop
 RUN apt update && apt install -y curl gnupg2 lsb-release \
     vim terminator wget iputils-ping
 
-RUN echo "deb [signed-by=/usr/share/keyrings/ros2-latest-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(lsb_release -cs) main" > /etc/apt/sources.list.d/ros2.list
-
 # Actualizamos e instalamos las actualizaciones necesarias
 RUN apt update && apt upgrade -y
 
