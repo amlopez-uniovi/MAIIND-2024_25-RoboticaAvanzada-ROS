@@ -109,7 +109,9 @@ setup(
     version='0.0.1',
     packages=[package_name],
     data_files=[
-        ('share/' + package_name, ['resource/turtlesim_circle']),
+        ('share/ament_index/resource_index/packages', ['resource/' + package_name]),
+        ('share/' + package_name, ['package.xml']),
+        ('share/' + package_name + '/launch', ['launch/turtlesim_circle_launch.py']),
     ],
     install_requires=['setuptools'],
     zip_safe=True,
