@@ -60,7 +60,7 @@ exit
 Si el contenedor está en ejecución y necesitas abrir otro terminal, usa:
 
 ```bash
-docker exec -it maiind_ros2_humble bash
+docker exec -it maiind_ros2_humble_container bash
 ```
 
 **Explicación:**
