@@ -12,7 +12,7 @@ Para crear la imagen de Docker que utilizaremos en este módulo, sigue estos pas
 2. Ejecuta el siguiente comando:
 
     ```bash
-    docker build -t ros2-humble-maiind_docker_file .
+    docker build -t ros2-humble-maiind_image .
     ```
 
     **Explicación:**
@@ -35,15 +35,15 @@ Para crear la imagen de Docker que utilizaremos en este módulo, sigue estos pas
 2. Ejecuta el contenedor de Docker con el siguiente comando:
 
     ```bash
-    docker run -it -v $(pwd)/maiind_ws/src:/root/maiind_ws/src --name maiind_ros2_humble ros2-humble-maiind
+    docker run -it -v $(pwd)/maiind_ws/src:/root/maiind_ws/src --name maiind_ros2_humble_container ros2-humble-maiind_image
     ```
 
     **Explicación:**
     - `docker run`: Crea y ejecuta un contenedor basado en una imagen.
     - `-it`: Permite la interacción con el contenedor a través de un terminal.
     - `-v $(pwd)/maiind_ws/src:/root/maiind_ws/src`: Monta un volumen para sincronizar la carpeta local `maiind_ws/src` con el contenedor.
-    - `--name maiind_ros2_humble`: Asigna un nombre al contenedor.
-    - `ros2-humble-maiind`: Nombre de la imagen utilizada para crear el contenedor.
+    - `--name maiind_ros2_humble_container`: Asigna un nombre al contenedor.
+    - `ros2-humble-maiind_image`: Nombre de la imagen utilizada para crear el contenedor.
 
 ## Comandos útiles
 
