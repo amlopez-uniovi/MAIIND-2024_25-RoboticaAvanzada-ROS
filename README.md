@@ -12,7 +12,7 @@ Para crear la imagen de Docker que utilizaremos en este módulo, sigue estos pas
 2. Ejecuta el siguiente comando:
 
     ```bash
-    docker build -t ros2-humble-maiind .
+    docker build -t ros2-humble-maiind_docker_file .
     ```
 
     **Explicación:**
