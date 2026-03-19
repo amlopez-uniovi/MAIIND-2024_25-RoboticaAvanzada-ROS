@@ -12,12 +12,12 @@ Para crear la imagen de Docker que utilizaremos en este módulo, sigue estos pas
 2. Ejecuta el siguiente comando:
 
     ```bash
-    docker build -t ros2-humble-maiind_image .
+    docker build -t ros2-humble-maiind-image .
     ```
 
     **Explicación:**
     - `docker build`: Comando para construir una imagen de Docker.
-    - `-t ros2-humble-maiind`: Etiqueta (nombre) asignada a la imagen creada.
+    - `-t ros2-humble-maiind-image`: Etiqueta (nombre) asignada a la imagen creada.
     - `.`: Indica que el contexto de construcción es la carpeta actual.
 
 ## Crear el repositorio de trabajo
@@ -35,15 +35,15 @@ Para crear la imagen de Docker que utilizaremos en este módulo, sigue estos pas
 2. Ejecuta el contenedor de Docker con el siguiente comando:
 
     ```bash
-    docker run -it -v $(pwd)/maiind_ws/src:/root/maiind_ws/src --name maiind_ros2_humble_container ros2-humble-maiind_image
+    docker run -it -v $(pwd)/maiind_ws/src:/root/maiind_ws/src --name ros2-humble-maiind-container ros2-humble-maiind-image
     ```
 
     **Explicación:**
     - `docker run`: Crea y ejecuta un contenedor basado en una imagen.
     - `-it`: Permite la interacción con el contenedor a través de un terminal.
     - `-v $(pwd)/maiind_ws/src:/root/maiind_ws/src`: Monta un volumen para sincronizar la carpeta local `maiind_ws/src` con el contenedor.
-    - `--name maiind_ros2_humble_container`: Asigna un nombre al contenedor.
-    - `ros2-humble-maiind_image`: Nombre de la imagen utilizada para crear el contenedor.
+    - `--name ros2-humble-maiind-container`: Asigna un nombre al contenedor.
+    - `ros2-humble-maiind-image`: Nombre de la imagen utilizada para crear el contenedor.
 
 ## Comandos útiles
 
@@ -60,13 +60,13 @@ exit
 Si el contenedor está en ejecución y necesitas abrir otro terminal, usa:
 
 ```bash
-docker exec -it maiind_ros2_humble_container bash
+docker exec -it ros2-humble-maiind-container bash
 ```
 
 **Explicación:**
 - `docker exec`: Ejecuta un comando en un contenedor en ejecución.
 - `-it`: Permite la interacción con el terminal del contenedor.
-- `ros2-humble-maiind`: Nombre del contenedor.
+- `ros2-humble-maiind-container`: Nombre del contenedor.
 - `bash`: Shell que se abrirá en el contenedor.
 
 ### Inspeccionar el enlace con el volumen local
@@ -74,7 +74,7 @@ docker exec -it maiind_ros2_humble_container bash
 Para verificar cómo está configurado el volumen entre tu máquina y el contenedor:
 
 ```bash
-docker inspect maiind_ros2_humble | grep -i "Mounts" -A 10
+docker inspect ros2-humble-maiind-container | grep -i "Mounts" -A 10
 ```
 
 **Explicación:**
@@ -86,24 +86,24 @@ docker inspect maiind_ros2_humble | grep -i "Mounts" -A 10
 Si el contenedor ha sido detenido, puedes iniciarlo nuevamente con:
 
 ```bash
-docker start maiind_ros2_humble
+docker start ros2-humble-maiind-container
 ```
 
 **Explicación:**
 - `docker start`: Inicia un contenedor detenido.
-- `ros2-humble-maiind`: Nombre del contenedor.
+- `ros2-humble-maiind-container`: Nombre del contenedor.
 
 ### Detener el contenedor
 
 Para detener el contenedor en ejecución:
 
 ```bash
-docker stop maiind_ros2_humble
+docker stop ros2-humble-maiind-container
 ```
 
 **Explicación:**
 - `docker stop`: Detiene un contenedor en ejecución.
-- `ros2-humble-maiind`: Nombre del contenedor.
+- `ros2-humble-maiind-container`: Nombre del contenedor.
 
 ## Prueba de turtlesim
 
