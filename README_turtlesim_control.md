@@ -30,6 +30,21 @@ mkdir -p turtlesim_control/resource
 touch turtlesim_control/resource/turtlesim_control
 ```
 
+## 🧱 Crear archivos de control
+
+```bash
+cd ~/maiind_ws/src/turtlesim_control/turtlesim_control
+touch turtlesim_circle_node.py
+touch go_to_goal_node.py
+```
+
+```bash
+cd ~/maiind_ws/src/turtlesim_control
+mkdir -p launch
+touch launch/circle_launch.py
+touch launch/go_to_goal_launch.py
+```
+
 ## Estructura del proyecto
 
 ```text
