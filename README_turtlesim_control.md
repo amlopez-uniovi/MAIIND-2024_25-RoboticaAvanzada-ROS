@@ -119,8 +119,8 @@ class GoToGoal(Node):
         self.publisher = self.create_publisher(Twist, '/turtle1/cmd_vel', 10)
         self.subscriber = self.create_subscription(Pose, '/turtle1/pose', self.pose_callback, 10)
         self.timer = self.create_timer(0.1, self.move)
-        self.goal_x = 5.0
-        self.goal_y = 5.0
+        self.goal_x = 10.0
+        self.goal_y = 10.0
         self.pose = None
         self.get_logger().info("Moviendo hacia el objetivo")
 
