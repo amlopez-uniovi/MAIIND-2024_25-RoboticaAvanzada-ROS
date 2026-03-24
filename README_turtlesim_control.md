@@ -62,7 +62,7 @@ turtlesim_control/
 └── setup.py
 ```
 
-## Nodo 1: Movimiento en círculo
+## Nodo 1: Movimiento en círculo (turtlesim_circle_node.py)
 
 ```python
 import rclpy
@@ -102,7 +102,7 @@ if __name__ == '__main__':
     main()
 ```
 
-## Nodo 2: Go To Goal
+## Nodo 2: Go To Goal (go_to_goal_node.py)
 
 ```python
 import math
