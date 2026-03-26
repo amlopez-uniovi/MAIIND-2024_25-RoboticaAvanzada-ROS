@@ -2,8 +2,8 @@
 
 Este paquete de ROS 2 implementa dos tipos de control para `turtlesim`:
 
-- 🔵 **Movimiento en círculo**
-- 🎯 **Movimiento hacia un punto objetivo (go to goal)**
+- **Movimiento en círculo**
+- **Movimiento hacia un punto objetivo (go to goal)**
 
 Ambos usan:
 
@@ -12,7 +12,7 @@ Ambos usan:
 
 ---
 
-## 📁 Creación del workspace
+## Creación del workspace
 
 ```bash
 mkdir -p ~/maiind_ws/src
@@ -21,7 +21,7 @@ colcon build
 source install/setup.bash
 ```
 
-## 📁 Creación del paquete
+## Creación del paquete
 
 ```bash
 cd ~/maiind_ws/src
@@ -30,7 +30,7 @@ mkdir -p turtlesim_control/resource
 touch turtlesim_control/resource/turtlesim_control
 ```
 
-## 🧱 Crear archivos de control
+## Crear archivos de control
 
 ```bash
 cd ~/maiind_ws/src/turtlesim_control/turtlesim_control
